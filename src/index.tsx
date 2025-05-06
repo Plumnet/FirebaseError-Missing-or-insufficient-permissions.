@@ -1,6 +1,6 @@
 import { Box, ChakraProvider, Flex, Text } from '@chakra-ui/react'
 import Link from 'next/link'
-import Header from './components/Header'
+// import Header from './components/Header'
 
 export default function index() {
   //画像の制御
