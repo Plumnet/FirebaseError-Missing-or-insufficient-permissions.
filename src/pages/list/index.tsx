@@ -142,49 +142,47 @@ export default function Home() {
     //表示部分
     return (
         //ChakraUIを使用するのに、不可欠      
-        <ChakraProvider>
-            <>
-                {/* 見出し部分の表示領域 */}
-                <Box sx={innerBoxStyles}>
-                    <Text fontSize={32} color='Green' textAlign={['left']}>
-                        一覧画面
-                    </Text>
-                </Box>
-                {/* 作成ボタンの表示領域*/}
-                <Box m={4}>
-                    <a href="/create">
-                        <Button colorScheme='red' size='sm'>
-                            タスク作成
-                        </Button>
-                    </a>
-                </Box>
-                {/* タスク項目、編集ボタン、削除ボタンの表示領域*/}
-                <Box m={8}>
-                    <ul>
-                        {/* todosの結果を配列として返す */}
-                        {todos.map((todo) => (
-                            <li key={todo.id} >
-                                {/* 動的ルーティング 、idに対応した詳細画面へ遷移させる */}
-                                <Link
-                                    href={{
-                                        pathname: `/list/${todo.docId}`,
-                                    }}>
-                                    <span>{todo.title}</span>
-                                </Link>
-                                {/* 編集画面へ遷移させる */}
-                                <Link href={{
-                                    pathname: `/list/edit/${todo.docId}`,
-                                    query: { title: todo.title, },
+        <>
+            {/* 見出し部分の表示領域 */}
+            <Box>
+                <Text fontSize={32} color='Green' textAlign={['left']}>
+                    一覧画面
+                </Text>
+            </Box>
+            {/* 作成ボタンの表示領域*/}
+            <Box m={4}>
+                <a href="/create">
+                    <Button colorScheme='red' size='sm'>
+                        タスク作成
+                    </Button>
+                </a>
+            </Box>
+            {/* タスク項目、編集ボタン、削除ボタンの表示領域*/}
+            <Box m={8}>
+                <ul>
+                    {/* todosの結果を配列として返す */}
+                    {todos.map((todo) => (
+                        <li key={todo.id} >
+                            {/* 動的ルーティング 、idに対応した詳細画面へ遷移させる */}
+                            <Link
+                                href={{
+                                    pathname: `/list/${todo.docId}`,
                                 }}>
-                                    <Button colorScheme='teal' size='sm' m={2}>編集</Button>
-                                </Link>
-                                {/* handleDeleteはonClick、todoはhandleDeleteの引数 */}
-                                <Delete handleDelete={red} todo={todo} />
-                            </li>
-                        ))}
-                    </ul >
-                </Box>
-            </>
-        </ChakraProvider >
+                                <span>{todo.title}</span>
+                            </Link>
+                            {/* 編集画面へ遷移させる */}
+                            <Link href={{
+                                pathname: `/list/edit/${todo.docId}`,
+                                query: { title: todo.title, },
+                            }}>
+                                <Button colorScheme='teal' size='sm' m={2}>編集</Button>
+                            </Link>
+                            {/* handleDeleteはonClick、todoはhandleDeleteの引数 */}
+                            <Delete handleDelete={red} todo={todo} />
+                        </li>
+                    ))}
+                </ul >
+            </Box>
+        </>
     )
 }

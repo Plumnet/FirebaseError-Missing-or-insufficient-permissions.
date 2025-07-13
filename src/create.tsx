@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import Create from './components/Create'
 import { Box, ChakraProvider, Text } from '@chakra-ui/react';
 import db, { auth } from '@/firebase';
 import { addDoc, collection, doc, getDocs, setDoc } from 'firebase/firestore';
 import { useRouter } from 'next/router'
 import { onAuthStateChanged } from 'firebase/auth';
+import Create from './pages/components/create';
 
 export default function create(todo: any) {
 
@@ -97,18 +97,16 @@ export default function create(todo: any) {
     //表示部分
     return (
         //ChakraUIを使用するのに、不可欠
-        <ChakraProvider>
-            <div>
-                {/* 見出し部分の表示領域 */}
-                <Box sx={innerBoxStyles}>
-                    <Text fontSize={32} color='Yellow' textAlign={['left']}>
-                        作成画面
-                    </Text>
-                </Box>
-                {/* addはonClick、titleは入力フォームの値、addformはonChange */}
-                <Create add={handleAddTodo} title={todoTitle} addform={handleAddFormChanges} />
-                <button onClick={() => newTodo(todo)}>ボタン</button>
-            </div>
-        </ChakraProvider >
+        <div>
+            {/* 見出し部分の表示領域 */}
+            <Box>
+                <Text fontSize={32} color='Yellow' textAlign={['left']}>
+                    作成画面
+                </Text>
+            </Box>
+            {/* addはonClick、titleは入力フォームの値、addformはonChange */}
+            <Create add={handleAddTodo} title={todoTitle} addform={handleAddFormChanges} />
+            <button onClick={() => newTodo(todo)}>ボタン</button>
+        </div>
     )
 }
