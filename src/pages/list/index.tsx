@@ -124,14 +124,18 @@ export default function Home() {
             )
         }
         //todo関数を呼び出す
-        useEffect(() => {
-            todo()
-        }, []);
+        // useEffect(() => {
+        //     todo()
+        // }, []);
     }
-    todo()
+    // todo()
     //こちらのログは、画面上でpostと表示される
     //40行目と同じ内容ではある
     console.log('post', posts)
+
+    useEffect(() => {
+        todo()
+    }, []);
 
 
 
